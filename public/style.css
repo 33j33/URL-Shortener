@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap');
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #e2eafc;
+    font-family: 'Lato', sans-serif;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #172e3d;
+}
+header h1 img {
+    height: 3rem;
+    padding: 0 5px;
+}
+header p {
+    font-size: 1rem;
+    font-weight: 300;
+    color: #353535;
+}
+.form-wrapper {
+    margin: 30px auto;
+    padding: 4px;
+    border: .6px solid rgba(7, 241, 143, 0.37);
+    background-color: rgba(110, 233, 165, 0.2);
+    border-radius: 5px;
+}
+.form {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.form #fullUrlInput {
+    padding: 5px;
+    width: clamp(20ch, 50%, 60ch);
+    border: .5px solid rgba(7, 62, 241, 0.37);
+    border-radius: 3px;
+}
+.form #fullUrlInput:hover {
+    border: .7px solid rgba(7, 62, 241, 0.637);
+    transform: scale(1.05, 1.05);
+}
+.form .btn {
+    padding: 5px;
+    width: 70px;
+    border: .5px solid rgba(7, 62, 241, 0.37);
+    border-radius: 3px;
+    transition: transform ease-in-out;
+}
+.form .btn:hover {
+    border: .7px solid rgba(7, 62, 241, 0.637);
+    transform: scale(1.05, 1.05);
+}
+
+/* Table Styles */
+
+.table-wrapper{
+    margin: 10px 70px 70px;
+    box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+}
+
+.fl-table {
+    border-radius: 5px;
+    font-weight: normal;
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    max-width: 100%;
+    white-space: nowrap;
+    background-color: white;
+}
+
+.fl-table td, .fl-table th {
+    text-align: center;
+    padding: 8px;
+}
+
+.fl-table td {
+    border-right: 1px solid #f8f8f8;
+    font-size: .9rem;
+}
+
+.fl-table thead th {
+    color: #ffffff;
+    background: rgb(67, 146, 122);
+    font-size: 1.3rem;
+    width: 200px;
+}
+
+
+.fl-table thead th:nth-child(odd) {
+    color: #ffffff;
+    background: #2b537a;
+}
+
+.fl-table tr:nth-child(even) {
+    background: #F8F8F8;
+}
+
+/* Layout for screen size smaller than 700px */
+
+@media (max-width: 700px) {
+    .fl-table thead th {
+        font-size: 1.1rem;
+    }
+    .fl-table tbody td {
+        font-size: .8rem;
+        overflow: hidden;
+        max-width: 50px;
+        height: auto;
+    }
+}

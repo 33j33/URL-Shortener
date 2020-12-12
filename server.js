@@ -5,8 +5,13 @@ const urlModel = require('./models/url.js');
 const app = express()
 
 
-// Needed to accept contents inside POST body
+// Needed to parse contents inside POST / PUT body when sent as JSON object
+// parse application/json
 app.use(express.json());
+
+// Needed to parse contents inside POST / PUT body when sent as string or array
+// parse application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: false }));
 
 // Connect to Mongoose
 const mongodbURI = process.env.DB_URI;
@@ -38,14 +43,28 @@ app.get('/', async (req, res) => {
 })
 
 // POST request
-// Sending a url to shorten using post request
+// Clients send a url to shorten using post request from the form
+// and the following function handles it.
 app.post('/shortenUrl', async (req, res) => {
     try {
         await urlModel.create({ fullUrl: req.body.fullUrl })
-        console.log(req.body.fullUrl)
-        res.status(201).redirect('/');
+        res.redirect('/');
     }
     catch (err) {
-        res.status(400).json({ message: err.message })
+        res.sendStatus(400);
     }
+})
+
+// GET request 
+// returning the full Url according to shortend Url passed in the request params
+app.get('/:shortendUrl', async (req, res) => {
+
+    const url = await urlModel.findOne({ shortendUrl: req.params.shortendUrl });
+    if (url == null) {
+        // url not found hence send 404
+        return res.sendStatus(404);
+    }
+    url.clicks++;
+    await url.save();
+    res.redirect(url.fullUrl);
 })

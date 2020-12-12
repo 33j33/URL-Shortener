@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const shortId = require("shortid");
 const nanoid = require("nanoid");
 
 const urlDbSchema = new mongoose.Schema({
@@ -10,7 +9,7 @@ const urlDbSchema = new mongoose.Schema({
     shortendUrl: {
         type: String,
         required: true,
-        default: nanoid.nanoid()
+        default: nanoid.nanoid(10)
     },
     clicks: {
         type: Number,
@@ -22,5 +21,5 @@ const urlDbSchema = new mongoose.Schema({
 
 // Name of the model here should be a singular of the collections name and 
 // and with a capital letter
-// `Url` for `urls`
+// hence `Url` for `urls`
 module.exports = mongoose.model("Url", urlDbSchema);

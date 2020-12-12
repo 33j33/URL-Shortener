@@ -5,5 +5,5 @@ POST http://localhost:3000/shortenUrl
 Content-Type: application/json
 
 {
-    "fullUrl" : "https://cloud.mongodb.com"
+    "fullUrl" : "https://coolors.co"
 }
