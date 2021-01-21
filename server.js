@@ -32,6 +32,7 @@ mongoose.connect(mongodbURI, { useNewUrlParser: true, useUnifiedTopology: true }
 
 // Setting the view enginer as 'ejs'
 app.set('view engine', 'ejs');
+app.set('views', './views');
 
 // Serving up the static server files
 app.use(express.static('public'));
